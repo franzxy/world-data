@@ -10,7 +10,7 @@
             $file = fopen($path, "r");
 
             // while there are lines in the file add line to array
-            while (($line = fgetcsv($file)) !== FALSE) {
+            while ($line = fgetcsv($file)) {
                 $array[] = $line;
             }
 
