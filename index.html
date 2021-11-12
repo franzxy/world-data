@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="description" content="First course exercise of the lecture Web and Multimedia Engineering.">
+        <meta name="author" content="Timon Trettin">
+        <meta name="keywords" content="HTML, CSS, JS">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+        <link href="/fontawesome-free-5.15.4-web/css/all.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="index.css">
+
+        <title>World Data Overview</title>
+    </head>
+    <body>
+        <header>
+            <div id="header-row"></div>
+            <img id="logo" src="world_data-logo.svg" alt="logo">
+            <nav><ul id="menu">
+                <li>
+                    <a>
+                        <span class="fas fa-table"></span>
+                        A1 - Table
+                    </a>
+                </li>
+                <li>
+                    <a href="parse.php">
+                        <span class="fas fa-cogs"></span>
+                        A2 - Parse
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span class="fas fa-save"></span>
+                        A2 - Save
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span class="fas fa-print"></span>
+                        A2 - Print
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span class="fab fa-node"></span>
+                        A3 - REST
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span class="fas fa-map-marked-alt"></span>
+                        A4 - Vis
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span class="fas fa-cube"></span>
+                        A5 - 3D
+                    </a>
+                </li>
+            </ul></nav>
+            <button id="menu-button" onclick="document.getElementById('menu').classList.toggle('flex')">
+                <span class="fas fa-bars"></span>
+            </button>
+        </header>
+
+        <div id="content">
+            <h1>World Data View...</h1>
+
+            <p id="text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+                diam nonumy eirmod tempor invidunt ut labore et dolore ut labore et dolore magna aliquyam erat, sed diam
+                magna aliquyam erat, sed diam voluptua. At vero eos et voluptua. At vero eos et accusam et justo duo dolores et ea
+                accusam et justo duo dolores et ea rebum. Stet clita kasd rebum. Stet clita kasd gubergren, no sea takimata sanctus
+                gubergren, no sea takimata sanctus est Lorem ipsum dolor est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+                sit amet. Lorem ipsum dolor sit amet, consetetur
+                amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                tempor invidunt ut labore et dolore magna aliquyam erat,
+                sed diam voluptua. At vero eos et accusam et justo duo
+                dolores et ea rebum. Stet clita kasd gubergren, no sea
+                takimata sanctus est Lorem ipsum dolor sit amet. from:
+                <a href="https://www.loremipsum.de/">www.loremipsum.de</a></p>
+
+            <div>Show/Hide: 
+                <a class="sh" onclick="[...document.getElementsByClassName('1')].forEach(e => e.classList.toggle('none'))">birth rate per 1000</a> |
+                <a class="sh" onclick="[...document.getElementsByClassName('2')].forEach(e => e.classList.toggle('none'))">cell phones per 100</a> |
+                <a class="sh" onclick="[...document.getElementsByClassName('3')].forEach(e => e.classList.toggle('none'))">children per woman</a> |
+                <a class="sh" onclick="[...document.getElementsByClassName('4')].forEach(e => e.classList.toggle('none'))">electricity consumption per capita</a> |
+                <a class="sh" onclick="[...document.getElementsByClassName('5')].forEach(e => e.classList.toggle('none'))">gdp_per_capita</a>
+            </div>
+
+            <div id="table-wrapper">
+                <table id="table" class="table table-bordered table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>
+                                Country
+                                <span class="fas fa-sort-up" onclick="sortTable('asc')"></span>
+                                <span class="fas fa-sort-down" onclick="sortTable('dsc')"></span>
+                            </th>
+                            <th class="1">birth rate per 1000</th>
+                            <th class="2">cell phones per 100</th>
+                            <th class="3">children per woman</th>
+                            <th class="4">electricity consumption per capita</th>
+                            <th class="5">gdp_per_capita</th>
+                            <th>gdp_per_capita_growth</th>
+                            <th>inflation annual</th>
+                            <th>internet user per 100</th>
+                            <th>life expectancy</th>
+                            <th>military expenditure percent of gdp</th>
+                            <th>gps_lat</th>
+                            <th>gps_long</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>001</td>
+                            <td>Brazil</td>
+                            <td class="1">16.405</td>
+                            <td class="2">90.01936334</td>
+                            <td class="3">1.862</td>
+                            <td class="4">2201.808724</td>
+                            <td class="5">4424.758692</td>
+                            <td>-1.520402823</td>
+                            <td>8.228535058</td>
+                            <td>39.22</td>
+                            <td>74</td>
+                            <td>1.615173655</td>
+                            <td>-14.235004000</td>
+                            <td>-51.925280000</td>
+                        </tr>
+                        <tr>
+                            <td>002</td>
+                            <td>Canada              </td>
+                            <td class="1">10.625             </td>
+                            <td class="2">70.70997244        </td>
+                            <td class="3">1.668             </td>
+                            <td class="4">15119.76414                       </td>
+                            <td class="5">25069.86915   </td>
+                            <td>-3.953353186         </td>
+                            <td>2.944408564     </td>
+                            <td>80.17086651          </td>
+                            <td>80.9           </td>
+                            <td>1.415710422                        </td>
+                            <td>56.130366000 </td>
+                            <td>-106.346771000</td>
+                        </tr>
+                        <tr>
+                            <td>003</td>
+                            <td>Chile               </td>
+                            <td class="1">15.04              </td>
+                            <td class="2">97.01862561        </td>
+                            <td class="3">1.873             </td>
+                            <td class="4">3276.06449                        </td>
+                            <td class="5">6451.631126   </td>
+                            <td>-2.610485847         </td>
+                            <td>7.47050527      </td>
+                            <td>38.8                 </td>
+                            <td>78.8           </td>
+                            <td>3.064076139                        </td>
+                            <td>-35.675147000</td>
+                            <td>71.542969000</td>
+                        </tr>
+                        <tr>
+                            <td>004</td>
+                            <td>China               </td>
+                            <td class="1">13.536             </td>
+                            <td class="2">55.97490921        </td>
+                            <td class="3">1.642             </td>
+                            <td class="4">2632.724637                       </td>
+                            <td class="5">2208.403948   </td>
+                            <td>8.648414427          </td>
+                            <td>6.684109668     </td>
+                            <td>28.97659939          </td>
+                            <td>75.6           </td>
+                            <td>2.24110794                         </td>
+                            <td>35.86166000  </td>
+                            <td>104.19539700</td>
+                        </tr>
+                        <tr>
+                            <td>005</td>
+                            <td>Colombia            </td>
+                            <td class="1">20.605             </td>
+                            <td class="2">92.34584564        </td>
+                            <td class="3">2.405             </td>
+                            <td class="4">1041.994137                       </td>
+                            <td class="5">3137.695335   </td>
+                            <td>0.2081538559         </td>
+                            <td>3.666941163     </td>
+                            <td>30                   </td>
+                            <td>75.3           </td>
+                            <td>3.833780372                        </td>
+                            <td>4.570868000  </td>
+                            <td>-74.297333000</td>
+                        </tr>
+                        <tr>
+                            <td>006</td>
+                            <td>Ecuador</td>
+                            <td class="1">20.989</td>
+                            <td class="2">92.84925653</td>
+                            <td class="3">2.69</td>
+                            <td class="4">1078.038961</td>
+                            <td class="5">1692.067197</td>
+                            <td>-1.079538461</td>
+                            <td>7.595866872</td>
+                            <td>24.6</td>
+                            <td>74.1</td>
+                            <td>3.746501879</td>
+                            <td>-1.831239000 </td>
+                            <td>-78.183406000</td>
+                        </tr>
+                        <tr>
+                            <td>007</td>
+                            <td>Egypt               </td>
+                            <td class="1">24.83              </td>
+                            <td class="2">69.43661504        </td>
+                            <td class="3">2.919             </td>
+                            <td class="4">1607.918763                       </td>
+                            <td class="5">1911.964501   </td>
+                            <td>2.856917581          </td>
+                            <td>10.10750976     </td>
+                            <td>24.28                </td>
+                            <td>70.2           </td>
+                            <td>2.137305699                        </td>
+                            <td>26.820553000 </td>
+                            <td>30.802498000</td>
+                        </tr>
+                        <tr>
+                            <td>008</td>
+                            <td>Finland             </td>
+                            <td class="1">11.127             </td>
+                            <td class="2">144.1530224        </td>
+                            <td class="3">1.86              </td>
+                            <td class="4">15241.61194                       </td>
+                            <td class="5">26205.68832   </td>
+                            <td>-8.791558776         </td>
+                            <td>0.4277308694    </td>
+                            <td>82.53133098          </td>
+                            <td>79.7           </td>
+                            <td>1.501872268                        </td>
+                            <td>61.924110000 </td>
+                            <td>25.748151000</td>
+                        </tr>
+                        <tr>
+                            <td>009</td>
+                            <td>France              </td>
+                            <td class="1">12.21              </td>
+                            <td class="2">95.44434226        </td>
+                            <td class="3">1.978             </td>
+                            <td class="4">7339.946832                       </td>
+                            <td class="5">22508.76261   </td>
+                            <td>-3.264056248         </td>
+                            <td>1.050366124     </td>
+                            <td>69.0633593           </td>
+                            <td>81             </td>
+                            <td>2.55313249                         </td>
+                            <td>46.22763800  </td>
+                            <td>2.21374900</td>
+                        </tr>
+                        <tr>
+                            <td>010</td>
+                            <td>Germany             </td>
+                            <td class="1">8.136              </td>
+                            <td class="2">127.4188883        </td>
+                            <td class="3">1.376             </td>
+                            <td class="4">6753.05764                        </td>
+                            <td class="5">24368.19561   </td>
+                            <td>-4.886323581         </td>
+                            <td>0.5959234322    </td>
+                            <td>79.48523153          </td>
+                            <td>80             </td>
+                            <td>1.438871341                        </td>
+                            <td>51.165691000 </td>
+                            <td>10.451526000</td>
+                        </tr>
+                        <tr>
+                            <td>011</td>
+                            <td>Iceland             </td>
+                            <td class="1">14.738             </td>
+                            <td class="2">107.6604456        </td>
+                            <td class="3">2.123             </td>
+                            <td class="4">51259.18763                       </td>
+                            <td class="5">35310.97441   </td>
+                            <td>-6.990418561         </td>
+                            <td>6.900703626     </td>
+                            <td>92.13686385          </td>
+                            <td>82.2           </td>
+                            <td>0.0820538039                       </td>
+                            <td>64.9630510000</td>
+                            <td>-19.0208350000</td>
+                        </tr>
+                        <tr>
+                            <td>012</td>
+                            <td>Iraq                </td>
+                            <td class="1">31.585             </td>
+                            <td class="2">65.47478839        </td>
+                            <td class="3">4.276             </td>
+                            <td class="4">1086.323768                       </td>
+                            <td class="5">752.1833548   </td>
+                            <td>1.141874289          </td>
+                            <td>25.22442136     </td>
+                            <td>1.047516616          </td>
+                            <td>68.1           </td>
+                            <td>4.621383386                        </td>
+                            <td>33.223191000 </td>
+                            <td>43.679291000</td>
+                        </tr>
+                        <tr>
+                            <td>013</td>
+                            <td>Japan               </td>
+                            <td class="1">8.201              </td>
+                            <td class="2">91.8955442         </td>
+                            <td class="3">1.359             </td>
+                            <td class="4">7838.005685                       </td>
+                            <td class="5">38242.02429   </td>
+                            <td>-6.180260885         </td>
+                            <td>-2.08543109     </td>
+                            <td>77.38468963          </td>
+                            <td>82.8           </td>
+                            <td>1.019445017                        </td>
+                            <td>36.204824000 </td>
+                            <td>138.252924000</td>
+                        </tr>
+                        <tr>
+                            <td>014</td>
+                            <td>Kazakhstan          </td>
+                            <td class="1">19.775             </td>
+                            <td class="2">107.7147692        </td>
+                            <td class="3">2.537             </td>
+                            <td class="4">4447.142293                       </td>
+                            <td class="5">2345.86415    </td>
+                            <td>-1.437812068         </td>
+                            <td>19.5422854      </td>
+                            <td>17.91457965          </td>
+                            <td>66.6           </td>
+                            <td>1.105385125                        </td>
+                            <td>48.019573000 </td>
+                            <td>66.923684000</td>
+                        </tr>
+                        <tr>
+                            <td>015</td>
+                            <td>Mexico              </td>
+                            <td class="1">19.091             </td>
+                            <td class="2">74.25785259        </td>
+                            <td class="3">2.313             </td>
+                            <td class="4">1869.82352                        </td>
+                            <td class="5">5875.619997   </td>
+                            <td>-7.417438847         </td>
+                            <td>4.033645258     </td>
+                            <td>26.34                </td>
+                            <td>75.5           </td>
+                            <td>0.5396656609                       </td>
+                            <td>23.6345010000</td>
+                            <td>-102.5527840000</td>
+                        </tr>
+                        <tr>
+                            <td>016</td>
+                            <td>New Zealand         </td>
+                            <td class="1">13.831             </td>
+                            <td class="2">108.7301521        </td>
+                            <td class="3">2.125             </td>
+                            <td class="4">9375.550304                       </td>
+                            <td class="5">14778.16393   </td>
+                            <td>-1.552308788         </td>
+                            <td>3.486782259     </td>
+                            <td>79.82609287          </td>
+                            <td>80.3           </td>
+                            <td>1.140562366                        </td>
+                            <td>-40.900557000</td>
+                            <td>174.885971000</td>
+                        </tr>
+                        <tr>
+                            <td>017</td>
+                            <td>Nigeria             </td>
+                            <td class="1">40.134             </td>
+                            <td class="2">48.23561006        </td>
+                            <td class="3">6.021             </td>
+                            <td class="4">119.8151486                       </td>
+                            <td class="5">513.5003377   </td>
+                            <td>4.3526073            </td>
+                            <td>9.313146383     </td>
+                            <td>20                   </td>
+                            <td>58.5           </td>
+                            <td>0.8924302789                       </td>
+                            <td>9.0819990000 </td>
+                            <td>8.6752770000</td>
+                        </tr>
+                        <tr>
+                            <td>018</td>
+                            <td>Peru                </td>
+                            <td class="1">21.342             </td>
+                            <td class="2">85.86901405        </td>
+                            <td class="3">2.545             </td>
+                            <td class="4">1043.052601                       </td>
+                            <td class="5">2955.186222   </td>
+                            <td>-0.2228977721        </td>
+                            <td>4.49134447      </td>
+                            <td>31.4                 </td>
+                            <td>76.7           </td>
+                            <td>1.348875763                        </td>
+                            <td>-9.189967000 </td>
+                            <td>-75.015152000</td>
+                        </tr>
+                        <tr>
+                            <td>019</td>
+                            <td>Russia              </td>
+                            <td class="1">10.828             </td>
+                            <td class="2">161.1162887        </td>
+                            <td class="3">1.537             </td>
+                            <td class="4">6132.978648                       </td>
+                            <td class="5">2806.41483    </td>
+                            <td>-7.749103694         </td>
+                            <td>11.60398093     </td>
+                            <td>29.23584146          </td>
+                            <td>68.3           </td>
+                            <td>4.36259042                         </td>
+                            <td>61.52401000  </td>
+                            <td>105.31875600</td>
+                        </tr>
+                        <tr>
+                            <td>020</td>
+                            <td>Saudi Arabia        </td>
+                            <td class="1">23.569             </td>
+                            <td class="2">167.3474553        </td>
+                            <td class="3">2.898             </td>
+                            <td class="4">7430.743897                       </td>
+                            <td class="5">9294.355996   </td>
+                            <td>-2.242127204         </td>
+                            <td>14.36222827     </td>
+                            <td>38                   </td>
+                            <td>77.6           </td>
+                            <td>10.95653405                        </td>
+                            <td>23.88594200  </td>
+                            <td>45.07916200</td>
+                        </tr>
+                        <tr>
+                            <td>021</td>
+                            <td>South Africa        </td>
+                            <td class="1">22.113             </td>
+                            <td class="2">93.33587369        </td>
+                            <td class="3">2.5               </td>
+                            <td class="4">4532.021902                       </td>
+                            <td class="5">3697.67368    </td>
+                            <td>-2.732989408         </td>
+                            <td>7.861608575     </td>
+                            <td>10.08745979          </td>
+                            <td>55.8           </td>
+                            <td>1.394530379                        </td>
+                            <td>-30.559482000</td>
+                            <td>22.937506000</td>
+                        </tr>
+                        <tr>
+                            <td>022</td>
+                            <td>Sweden              </td>
+                            <td class="1">11.72              </td>
+                            <td class="2">112.1241184        </td>
+                            <td class="3">1.937             </td>
+                            <td class="4">14143.01101                       </td>
+                            <td class="5">30885.45914   </td>
+                            <td>-5.976535294         </td>
+                            <td>1.022227082     </td>
+                            <td>91.12326108          </td>
+                            <td>81.2           </td>
+                            <td>1.247701873                        </td>
+                            <td>60.128161000 </td>
+                            <td>18.643501000</td>
+                        </tr>
+                        <tr>
+                            <td>023</td>
+                            <td>United Arab Emirates</td>
+                            <td class="1">14.027             </td>
+                            <td class="2">153.7997194        </td>
+                            <td class="3">1.903             </td>
+                            <td class="4">9998.291079                       </td>
+                            <td class="5">22507.00157   </td>
+                            <td>-11.99171952         </td>
+                            <td>8.549032358     </td>
+                            <td>64                   </td>
+                            <td>76.1           </td>
+                            <td>5.834881976                        </td>
+                            <td>23.424076000 </td>
+                            <td>53.847818000</td>
+                        </tr>
+                        <tr>
+                            <td>024</td>
+                            <td>United Kingdom      </td>
+                            <td class="1">12.195             </td>
+                            <td class="2">130.1742603        </td>
+                            <td class="3">1.89              </td>
+                            <td class="4">5685.635995                       </td>
+                            <td class="5">27933.77767   </td>
+                            <td>-5.019251823         </td>
+                            <td>2.861406642     </td>
+                            <td>77.79971962          </td>
+                            <td>79.7           </td>
+                            <td>2.667209048                        </td>
+                            <td>52.355517700 </td>
+                            <td>-1.174319700</td>
+                        </tr>
+                        <tr>
+                            <td>025</td>
+                            <td>United States       </td>
+                            <td class="1">14.191             </td>
+                            <td class="2">89.14911634        </td>
+                            <td class="3">2.002             </td>
+                            <td class="4">12913.71143                       </td>
+                            <td class="5">36539.22823   </td>
+                            <td>-4.342271218         </td>
+                            <td>1.152326348     </td>
+                            <td>71.21181627          </td>
+                            <td>78.3           </td>
+                            <td>4.822730027                        </td>
+                            <td>37.090240000 </td>
+                            <td>-95.712891000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div>Show/Hide: 
+                <a class="sh" onclick="[...document.getElementsByClassName('1')].forEach(e => e.classList.toggle('none'))">birth rate per 1000</a> |
+                <a class="sh" onclick="[...document.getElementsByClassName('2')].forEach(e => e.classList.toggle('none'))">cell phones per 100</a> |
+                <a class="sh" onclick="[...document.getElementsByClassName('3')].forEach(e => e.classList.toggle('none'))">children per woman</a> |
+                <a class="sh" onclick="[...document.getElementsByClassName('4')].forEach(e => e.classList.toggle('none'))">electricity consumption per capita</a> |
+                <a class="sh" onclick="[...document.getElementsByClassName('5')].forEach(e => e.classList.toggle('none'))">gdp_per_capita</a>
+            </div>
+        </div>
+
+        <footer>
+            <div class="column">
+                <p>Copyright &copy; 2020 world_data</p>
+                <p>First course exercise <b>HTML, CSS and JS</b> of the lecture Web and Multimedia Engineering.</p>
+            </div>
+            <div class="column-right">
+                <p>The solution has been created by:</p>
+                <p>Timon Trettin</p>
+            </div>
+        </footer>
+
+        <script>
+            function sortTable(dir) {
+
+                // modified from: https://www.w3schools.com/howto/howto_js_sort_table.asp
+
+                var table, rows, switching, i, x, y, shouldSwitch, switchcount = 0;
+                table = document.getElementById("table");
+                switching = true;
+                /* Make a loop that will continue until
+                no switching has been done: */
+                while (switching) {
+                    // Start by saying: no switching is done:
+                    switching = false;
+                    rows = table.rows;
+                    /* Loop through all table rows (except the
+                    first, which contains table headers): */
+                    for (i = 1; i < (rows.length - 1); i++) {
+                        // Start by saying there should be no switching:
+                        shouldSwitch = false;
+                        /* Get the two elements you want to compare,
+                        one from current row and one from the next: */
+                        x = rows[i].getElementsByTagName("TD")[1];
+                        y = rows[i + 1].getElementsByTagName("TD")[1];
+                        /* Check if the two rows should switch place,
+                        based on the direction, asc or desc: */
+                        if (dir == "asc") {
+                            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                                // If so, mark as a switch and break the loop:
+                                shouldSwitch = true;
+                                break;
+                            }
+                        } else if (dir == "dsc") {
+                            if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                                // If so, mark as a switch and break the loop:
+                                shouldSwitch = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (shouldSwitch) {
+                        /* If a switch has been marked, make the switch
+                        and mark that a switch has been done: */
+                        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                        switching = true;
+                        // Each time a switch is done, increase this count by 1:
+                        switchcount ++;
+                    }
+                }
+            }
+        </script>
+
+    </body>
+</html>
