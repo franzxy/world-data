@@ -35,18 +35,28 @@
 
             $xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><Countries></Countries>');
 
+            foreach($array as $key => $value) {
+                $subnode = $xml->addChild("Country");
+                foreach($value as $subkey => $subvalue) {
+                    $subnode->addChild($subkey, $subvalue);
+                }
+            }
+
+            echo '<pre>';
+            print_r($xml->asXML());
+            echo '</pre>';
+
+            echo '<pre>';
+            print_r($xml);
+            echo '</pre>';
+
             $domxml = new DOMDocument('1.0');
             $domxml->preserveWhiteSpace = false;
             $domxml->formatOutput = true;
-            /* @var $xml SimpleXMLElement */
             $domxml->loadXML($xml->asXML());
 
-            echo '<pre>';
-            print_r($xml->saveXML());
-            echo '</pre>';
-
             // return true if file saved or false if not
-            return $domxml->save('world_data.xml');
+            return $domxml->saveXML('world_data.xml');
         }
 
         public function printXML($xml, $xsl) {
