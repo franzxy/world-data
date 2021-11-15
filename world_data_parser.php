@@ -61,8 +61,22 @@
             return $dom->save('world_data.xml');
         }
 
-        public function printXML($xml, $xsl) {
-            return TRUE;
+        public function printXML($xml_path, $xsl_path) {
+
+            // load xml
+            $xml = new DOMDocument();
+            $xml->load($xml_path);
+    
+            // create xslt processor
+            $xslt = new XSLTProcessor();
+    
+            // load xsl and import it with the processor
+            $xsl = new DOMDocument();
+            $xsl->load($xsl_path);
+            $xslt->importStylesheet($xsl);
+    
+            // return transformed 
+            return $xslt->transformToXML($xml);
         }
     }
 ?>
