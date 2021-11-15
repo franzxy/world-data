@@ -31,32 +31,34 @@
 
         public function saveXML($array) {
 
-            // inspired by solutions on https://stackoverflow.com/questions/1397036/how-to-convert-array-to-simplexml
+            // inspired by https://www.codementor.io/@dev_amitpandey/convert-multidimensional-array-to-xml-file-in-php-wt74w2bvw
 
-            $xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><Countries></Countries>');
+            // create a new dom with a formatted output
+            $dom = new DOMDocument('1.0', 'UTF-8');
+            $dom->formatOutput = true;
+
+            // create base node "Countries"
+            $countries = $dom->appendChild($dom->createElement("Countries"));
 
             foreach($array as $key => $value) {
-                $subnode = $xml->addChild("Country");
+
+                // for each country in the array a new node is added
+                $country = $countries->appendChild($dom->createElement("Country"));
+
                 foreach($value as $subkey => $subvalue) {
-                    $subnode->addChild($subkey, $subvalue);
+
+                    // if the key contains spaces return only the first word, then remove the remaining spaces
+                    if (preg_match('/\s/', $subkey)) {
+                        $subkey = str_replace(' ', '', substr($subkey, 0, strpos($subkey, ' ')));
+                    }
+                
+                    // for each attribute of a country a new node is added within that country
+                    $country->appendChild($dom->createElement($subkey, str_replace(' ', '', $subvalue)));
                 }
             }
 
-            echo '<pre>';
-            print_r($xml->asXML());
-            echo '</pre>';
-
-            echo '<pre>';
-            print_r($xml);
-            echo '</pre>';
-
-            $domxml = new DOMDocument('1.0');
-            $domxml->preserveWhiteSpace = false;
-            $domxml->formatOutput = true;
-            $domxml->loadXML($xml->asXML());
-
             // return true if file saved or false if not
-            return $domxml->saveXML('world_data.xml');
+            return $dom->save('world_data.xml');
         }
 
         public function printXML($xml, $xsl) {
