@@ -16,7 +16,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
                 <link href="https://fonts.googleapis.com/css2?family=Roboto&amp;display=swap" rel="stylesheet" />
 
-                <link href="/fontawesome-free-5.15.4-web/css/all.css" rel="stylesheet" />
+                <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet" />
 
                 <link href="index.css" rel="stylesheet" />
 
