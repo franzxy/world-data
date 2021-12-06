@@ -1,0 +1,21 @@
+{
+  "name": "WME_A3_Trettin",
+  "version": "1.0.0",
+  "description": "This is the solution for the WME exercise 3 created by Timon Trettin.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "author": "Timon Trettin",
+  "license": "",
+  "dependencies": {
+    "body-parser": "1.x",
+    "csvtojson": "^2.0.10",
+    "express": "4.x"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
