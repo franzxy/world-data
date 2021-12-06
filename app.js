@@ -42,7 +42,7 @@ app.get('/items/:id', (req, res) => {
   if (result) {
     return res.send(result)
   } else {
-    return res.send(`No such id ${req.params.id} in database.`);
+    return res.status(400).send(`No such id ${req.params.id} in database.`);
   }
 });
 
@@ -55,7 +55,7 @@ app.get('/items/:id1/:id2', (req, res) => {
   if (input1 && input2 && result) {
     return res.send(result)
   } else {
-    return res.send('Range not possible.');
+    return res.status(400).send('Range not possible.');
   }
 });
 
@@ -81,24 +81,35 @@ app.get('/properties/:num', (req, res) => {
   if (result) {
     return res.send(result)
   } else {
-    return res.send('No such property available.');
+    return res.status(400).send('No such property available.');
   }
 });
 
 // POST
 
 app.post('/items', (req, res) => {
-  return res.send('Received a POST HTTP method');
+  if (req.body.name && Object.keys(req.body).length >= 3) {
+    data.push(req.body)
+    return res.send(`Added country ${req.body.name} to list!`)
+  } else {
+    return res.status(400).send('Invalid object.');
+  }
 });
 
 // DELETE
 
 app.delete('/items', (req, res) => {
-  return res.send('Received a DELETE HTTP method');
+  return res.send(`Deleted last country: ${data.pop().name}!`);
 });
 
-app.delete('/items/id', (req, res) => {
-  return res.send('Received a DELETE HTTP method');
+app.delete('/items/:id', (req, res) => {
+  let result = data[req.params.id]
+  if (result) {
+    data.splice(req.params.id)
+    return res.send(`Item ${result.name} deleted successfully.`);
+  } else {
+    return res.status(400).send(`No such id ${req.params.id} in database`);
+  }
 });
 
 // DO NOT CHANGE!
