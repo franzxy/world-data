@@ -31,13 +31,18 @@ csvConverter()
 /**************************************************************************
 ********************** handle HTTP METHODS ***********************
 **************************************************************************/
+
+// using status code 400 for all errors
+
 // GET
 
 app.get('/items', (req, res) => {
+  // return all data
   return res.send(data);
 });
 
 app.get('/items/:id', (req, res) => {
+  // find item in data where its id matches the params id
   let result = data.find(item => item.id === req.params.id)
   if (result) {
     return res.send(result)
@@ -47,10 +52,13 @@ app.get('/items/:id', (req, res) => {
 });
 
 app.get('/items/:id1/:id2', (req, res) => {
+  // check if first id exists
   let input1 = data.find(item => item.id === req.params.id1)
+  // check if second id exists
   let input2 = data.find(item => item.id === req.params.id2)
+  // get all data between the two ids (I am including both params ids here)
   let result = data.filter(item => {
-    return item.id > req.params.id1 && item.id < req.params.id2
+    return item.id >= req.params.id1 && item.id <= req.params.id2
   })
   if (input1 && input2 && result) {
     return res.send(result)
@@ -60,6 +68,7 @@ app.get('/items/:id1/:id2', (req, res) => {
 });
 
 app.get('/properties', (req, res) => {
+  // map the data
   return res.send(... new Map(
     data
       // get property name
@@ -71,6 +80,7 @@ app.get('/properties', (req, res) => {
 });
 
 app.get('/properties/:num', (req, res) => {
+  // create array tp use map, then get its first child ^^
   let result = [... new Map(
     data
       // get property name
@@ -88,6 +98,7 @@ app.get('/properties/:num', (req, res) => {
 // POST
 
 app.post('/items', (req, res) => {
+  // if the req body has a name property and 2 additional properties push to data
   if (req.body.name && Object.keys(req.body).length >= 3) {
     data.push(req.body)
     return res.send(`Added country ${req.body.name} to list!`)
@@ -99,13 +110,17 @@ app.post('/items', (req, res) => {
 // DELETE
 
 app.delete('/items', (req, res) => {
+  // pop last element of array and return its name
   return res.send(`Deleted last country: ${data.pop().name}!`);
 });
 
 app.delete('/items/:id', (req, res) => {
+  // check if requested id exists inside data array
   let result = data[req.params.id]
   if (result) {
-    data.splice(req.params.id)
+    // splice the requested id
+    data = data.splice(req.params.id)
+    // return the name of the deleted element
     return res.send(`Item ${result.name} deleted successfully.`);
   } else {
     return res.status(400).send(`No such id ${req.params.id} in database`);
