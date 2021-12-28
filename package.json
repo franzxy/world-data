@@ -1,7 +1,7 @@
 {
-  "name": "WME_A3_Trettin",
+  "name": "WME_A4_Trettin",
   "version": "1.0.0",
-  "description": "This is the solution for the WME exercise 3 created by Timon Trettin.",
+  "description": "This is the solution for the WME exercise 4 created by Timon Trettin.",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
