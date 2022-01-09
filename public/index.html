@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8"/>
-        <meta name="description" content="First course exercise of the lecture Web and Multimedia Engineering.">
-        <meta name="author" content="Timon Trettin">
-        <meta name="keywords" content="HTML, CSS, JS">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="css/html5reset.css">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="First course exercise of the lecture Web and Multimedia Engineering.">
+    <meta name="author" content="Timon Trettin">
+    <meta name="keywords" content="HTML, CSS, JS">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/html5reset.css">
 
-        <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
-        <link rel="stylesheet" href="css/index.css">
+    <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
 
-        <title>World Data Overview</title>
-    </head>
-    <body>
-        <header>
-            <div id="header-row"></div>
-            <img id="logo" src="img/world_data-logo.svg" alt="logo">
-            <nav><ul id="menu">
+    <link rel="stylesheet" href="css/index.css">
+
+    <title>World Data Overview</title>
+</head>
+
+<body>
+    <header>
+        <div id="header-row"></div>
+        <img id="logo" src="img/world_data-logo.svg" alt="logo">
+        <nav>
+            <ul id="menu">
                 <li>
                     <a href="/">
                         <span class="fas fa-table"></span>
@@ -66,29 +69,38 @@
                         A5 - 3D
                     </a>
                 </li>
-            </ul></nav>
-            <button id="menu-button" onclick="document.getElementById('menu').classList.toggle('flex')">
-                <span class="fas fa-bars"></span>
-            </button>
-        </header>
+            </ul>
+        </nav>
+        <button id="menu-button" onclick="document.getElementById('menu').classList.toggle('flex')">
+            <span class="fas fa-bars"></span>
+        </button>
+    </header>
 
-        <div id="content">
-            
+    <div id="content">
+        <div>
+            <select id="first-select"></select>
+            <div id="first-vis"></div>
         </div>
+        <div>
+            <select id="second-select"></select>
+            <div id="second-vis"></div>
+        </div>
+    </div>
 
-        <footer>
-            <div class="column">
-                <p>Copyright &copy; 2020 world_data</p>
-                <p>Course exercise <b>D3.js and Leaflet</b> of the lecture Web and Multimedia Engineering.</p>
-            </div>
-            <div class="column-right">
-                <p>The solution has been created by:</p>
-                <p>Timon Trettin</p>
-            </div>
-        </footer>
+    <footer>
+        <div class="column">
+            <p>Copyright &copy; 2020 world_data</p>
+            <p>Course exercise <b>D3.js and Leaflet</b> of the lecture Web and Multimedia Engineering.</p>
+        </div>
+        <div class="column-right">
+            <p>The solution has been created by:</p>
+            <p>Timon Trettin</p>
+        </div>
+    </footer>
 
-        <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
-        <script type="text/javascript" src="js/ajax.js"></script>
+    <script src="https://d3js.org/d3.v6.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
 
-    </body>
+</body>
+
 </html>

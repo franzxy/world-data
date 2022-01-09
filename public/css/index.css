@@ -373,3 +373,7 @@ footer {
         columns: 3;
     }
 }
+
+.active {
+    fill: dodgerblue;
+}
